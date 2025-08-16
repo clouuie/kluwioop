@@ -1,0 +1,66 @@
+@startuml
+
+class Student {
+  +name : string
+  +enrolledCourse : Course
+  +Student(n: string, c: Course)
+  --
+  name = "Alice"
+  enrolledCourse = mathCourse
+}
+
+class Course {
+  +title : string
+  #units : int
+  +Course(t: string, u: int)
+  --
+  title = "Mathematics"
+  units = 3
+}
+
+class Department {
+  +name : string
+  +teachers : List<teacher>
+  +Department(n: string)
+  --
+  name = "Science Department"
+  teachers = { Mr. Smith, Ms. Lee }
+}
+
+class teacher {
+  +name : string
+  #subject : string
+  +teacher(n: string, s: string)
+  +Teach() : void
+  --
+  name = "Mr. Smith", subject = "Physics"
+  name = "Ms. Lee", subject = "Chemistry"
+}
+
+class House {
+  +address : string
+  -rooms : List<Room>
+  +House(addr: string)
+  +ShowRooms() : void
+  --
+  address = "123 Main St"
+  rooms = { Living Room, Bedroom }
+}
+
+class Room {
+  +name : string
+  +Room(n: string)
+  --
+  name = "Living Room"
+  name = "Bedroom"
+}
+
+class Program {
+  +Main() : void
+}
+
+Student --> Course : enrolledCourse
+Department "0..1" --> "0..*" teacher : teachers
+House "0..1" *-- "0..*" Room : rooms
+
+@enduml
