@@ -59,8 +59,10 @@ class Program {
   +Main() : void
 }
 
-Student --> Course : enrolledCourse
-Department "0..1" --> "0..*" teacher : teachers
-House "0..1" *-- "0..*" Room : rooms
+
+Student -- Course : association
+Department o-- teacher : aggregation
+House *-- Room : composition
+
 
 @enduml
