@@ -1,0 +1,7 @@
+/workspaces/kluwioop/BlazorApp/obj/Debug/net8.0/BlazorApp.csproj.AssemblyReference.cache
+/workspaces/kluwioop/BlazorApp/obj/Debug/net8.0/BlazorApp.GeneratedMSBuildEditorConfig.editorconfig
+/workspaces/kluwioop/BlazorApp/obj/Debug/net8.0/BlazorApp.AssemblyInfoInputs.cache
+/workspaces/kluwioop/BlazorApp/obj/Debug/net8.0/BlazorApp.AssemblyInfo.cs
+/workspaces/kluwioop/BlazorApp/obj/Debug/net8.0/BlazorApp.csproj.CoreCompileInputs.cache
+/workspaces/kluwioop/BlazorApp/obj/Debug/net8.0/BlazorApp.MvcApplicationPartsAssemblyInfo.cache
+/workspaces/kluwioop/BlazorApp/obj/Debug/net8.0/BlazorApp.sourcelink.json
