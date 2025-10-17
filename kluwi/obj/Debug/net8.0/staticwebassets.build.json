@@ -1,0 +1,77 @@
+{
+  "Version": 1,
+  "Hash": "QXYxJFWAs7pJ0TemGq0n4GIEMjc7vec4t4KR0UzPCmg=",
+  "Source": "kluwi",
+  "BasePath": "_content/kluwi",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "kluwi/wwwroot",
+      "Source": "kluwi",
+      "ContentRoot": "/workspaces/kluwioop/kluwi/wwwroot/",
+      "BasePath": "_content/kluwi",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "/workspaces/kluwioop/kluwi/obj/Debug/net8.0/scopedcss/bundle/kluwi.styles.css",
+      "SourceId": "kluwi",
+      "SourceType": "Computed",
+      "ContentRoot": "/workspaces/kluwioop/kluwi/obj/Debug/net8.0/scopedcss/bundle/",
+      "BasePath": "_content/kluwi",
+      "RelativePath": "kluwi.styles.css",
+      "AssetKind": "All",
+      "AssetMode": "CurrentProject",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "ScopedCss",
+      "AssetTraitValue": "ApplicationBundle",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "/workspaces/kluwioop/kluwi/obj/Debug/net8.0/scopedcss/bundle/kluwi.styles.css"
+    },
+    {
+      "Identity": "/workspaces/kluwioop/kluwi/obj/Debug/net8.0/scopedcss/projectbundle/kluwi.bundle.scp.css",
+      "SourceId": "kluwi",
+      "SourceType": "Computed",
+      "ContentRoot": "/workspaces/kluwioop/kluwi/obj/Debug/net8.0/scopedcss/projectbundle/",
+      "BasePath": "_content/kluwi",
+      "RelativePath": "kluwi.bundle.scp.css",
+      "AssetKind": "All",
+      "AssetMode": "Reference",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "ScopedCss",
+      "AssetTraitValue": "ProjectBundle",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "/workspaces/kluwioop/kluwi/obj/Debug/net8.0/scopedcss/projectbundle/kluwi.bundle.scp.css"
+    },
+    {
+      "Identity": "/workspaces/kluwioop/kluwi/wwwroot/app.css",
+      "SourceId": "kluwi",
+      "SourceType": "Discovered",
+      "ContentRoot": "/workspaces/kluwioop/kluwi/wwwroot/",
+      "BasePath": "_content/kluwi",
+      "RelativePath": "app.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/app.css"
+    }
+  ]
+}
