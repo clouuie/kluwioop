@@ -2,75 +2,183 @@
 @using System.ComponentModel.DataAnnotations
 @inject NavigationManager Navigation
 
-<h1>Create an account</h1>
+<div class="register-page">
+    <div class="register-card shadow">
+        <h2 class="text-center mb-3">Create an Account</h2>
+        <p class="text-center text-muted mb-4">Join us and start your journey</p>
 
-@if (isSignedUp)
-{
-    <div class="alert alert-success" role="alert">
-        Signed up as @registerModel.Username
+        @if (isSignedUp)
+        {
+            <div class="alert alert-success" role="alert">
+                Signed up as @registerModel.Username
+            </div>
+        }
+
+        @if (validationMessages?.Count > 0)
+        {
+            <div class="alert alert-danger" role="alert">
+                <ul class="mb-0">
+                    @foreach (var msg in validationMessages)
+                    {
+                        <li>@msg</li>
+                    }
+                </ul>
+            </div>
+        }
+
+        <form @onsubmit="HandleSubmit" @onsubmit:preventDefault="true">
+            <div class="mb-3 text-start">
+                <label class="form-label">Username</label>
+                <input class="form-control" @bind="registerModel.Username" placeholder="Enter username" />
+                @if (fieldMessages.ContainsKey(nameof(registerModel.Username)))
+                {
+                    <div class="text-danger">@fieldMessages[nameof(registerModel.Username)]</div>
+                }
+            </div>
+
+            <div class="mb-3 text-start">
+                <label class="form-label">Email</label>
+                <input class="form-control" type="email" @bind="registerModel.Email" placeholder="e.g. kluwiformon@oop.com" />
+                @if (fieldMessages.ContainsKey(nameof(registerModel.Email)))
+                {
+                    <div class="text-danger">@fieldMessages[nameof(registerModel.Email)]</div>
+                }
+            </div>
+
+            <div class="mb-3 text-start">
+                <label class="form-label">Password</label>
+                <input class="form-control" type="password" @bind="registerModel.Password" placeholder="Enter password" />
+                @if (fieldMessages.ContainsKey(nameof(registerModel.Password)))
+                {
+                    <div class="text-danger">@fieldMessages[nameof(registerModel.Password)]</div>
+                }
+            </div>
+
+            <div class="mb-3 text-start">
+                <label class="form-label">Confirm Password</label>
+                <input class="form-control" type="password" @bind="registerModel.ConfirmPassword" placeholder="Confirm password" />
+                @if (fieldMessages.ContainsKey(nameof(registerModel.ConfirmPassword)))
+                {
+                    <div class="text-danger">@fieldMessages[nameof(registerModel.ConfirmPassword)]</div>
+                }
+            </div>
+
+            <button class="btn btn-primary w-100 mb-3" type="submit">Sign Up</button>
+
+            <div class="text-center">
+                <span class="text-muted">Already have an account?</span>
+                <a class="text-primary ms-1" href="/">Login</a>
+            </div>
+        </form>
     </div>
+</div>
+
+<style>
+/* === Layout === */
+.register-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #1a0728;
+    font-family: 'Poppins', sans-serif;
 }
 
-@if (validationMessages?.Count > 0)
-{
-    <div class="alert alert-danger" role="alert">
-        <ul class="mb-0">
-            @foreach (var msg in validationMessages)
-            {
-                <li>@msg</li>
-            }
-        </ul>
-    </div>
+/* === Card === */
+.register-card {
+    background-color: #2a0a45;
+    border-radius: 10px;
+    padding: 30px;
+    width: 360px;
+    box-shadow: 0 0 10px rgba(150, 80, 255, 0.2);
 }
 
-<form @onsubmit="HandleSubmit" @onsubmit:preventDefault="true">
-    <div class="mb-3">
-        <label class="form-label">Username</label>
-        <input class="form-control" @bind="registerModel.Username" />
-        @if (fieldMessages.ContainsKey(nameof(registerModel.Username)))
-        {
-            <div class="text-danger">@fieldMessages[nameof(registerModel.Username)]</div>
-        }
-    </div>
+/* === Headings === */
+h2 {
+    color: #f0e5ff;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
 
-    <div class="mb-3">
-        <label class="form-label">Email</label>
-        <input class="form-control" @bind="registerModel.Email" />
-        @if (fieldMessages.ContainsKey(nameof(registerModel.Email)))
-        {
-            <div class="text-danger">@fieldMessages[nameof(registerModel.Email)]</div>
-        }
-    </div>
+p {
+    color: #c5b3e6;
+    font-size: 0.9rem;
+}
 
-    <div class="mb-3">
-        <label class="form-label">Password</label>
-        <input class="form-control" type="password" @bind="registerModel.Password" />
-        @if (fieldMessages.ContainsKey(nameof(registerModel.Password)))
-        {
-            <div class="text-danger">@fieldMessages[nameof(registerModel.Password)]</div>
-        }
-    </div>
+/* === Labels and Inputs === */
+.form-label {
+    color: #e2d0ff;
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+}
 
-    <div class="mb-3">
-        <label class="form-label">Confirm Password</label>
-        <input class="form-control" type="password" @bind="registerModel.ConfirmPassword" />
-        @if (fieldMessages.ContainsKey(nameof(registerModel.ConfirmPassword)))
-        {
-            <div class="text-danger">@fieldMessages[nameof(registerModel.ConfirmPassword)]</div>
-        }
-    </div>
+.form-control {
+    width: 95%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #8057c8;
+    background-color: #3b1563;
+    color: white;
+    font-size: 0.9rem;
+    margin-top: 4px;
+}
 
-    <div class="d-flex gap-2">
-        <button class="btn btn-primary" type="submit">Sign up</button>
-        <a class="btn btn-secondary" href="/">Back to Login</a>
-    </div>
-</form>
+.form-control::placeholder {
+    color: #c3a8f0;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #a56dff;
+    box-shadow: 0 0 3px #a56dff;
+}
+
+/* === Validation Messages === */
+.text-danger {
+    color: #ff7ad9;
+    font-size: 0.85rem;
+}
+
+/* === Button === */
+.btn-primary {
+    background-color: #8b4dff;
+    border: none;
+    border-radius: 6px;
+    padding: 10px;
+    color: #fff;
+    font-weight: 500;
+    margin-top: 5px;
+}
+.btn-primary:hover {
+    background-color: #a068ff;
+}
+
+/* === Links === */
+.text-muted {
+    color: #bfa4e9 !important;
+}
+
+a {
+    color: #b48fff;
+    text-decoration: none;
+    font-size: 0.85rem;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+/* === Responsive === */
+@@media (max-width: 500px) {
+    .register-card {
+        width: 90%;
+        padding: 20px;
+    }
+}
+</style>
 
 @code {
     private RegisterModel registerModel = new();
-
     private bool isSignedUp;
-
     private List<string> validationMessages = new();
     private Dictionary<string, string> fieldMessages = new();
 
@@ -82,30 +190,18 @@
         var context = new ValidationContext(registerModel);
         var results = new List<ValidationResult>();
 
-        // Validate data annotations first
-        Validator.TryValidateObject(registerModel, context, results, validateAllProperties: true);
+        Validator.TryValidateObject(registerModel, context, results, true);
 
-        // Add results to message collections
         foreach (var result in results)
         {
-            if (result.MemberNames != null && result.MemberNames.Any())
+            foreach (var member in result.MemberNames)
             {
-                foreach (var member in result.MemberNames)
-                {
-                    if (!fieldMessages.ContainsKey(member))
-                    {
-                        fieldMessages[member] = result.ErrorMessage ?? "Invalid value.";
-                    }
-                }
-            }
-            else
-            {
-                validationMessages.Add(result.ErrorMessage ?? "Invalid value.");
+                if (!fieldMessages.ContainsKey(member))
+                    fieldMessages[member] = result.ErrorMessage ?? "Invalid value.";
             }
         }
 
-        // Additional check: password match
-        if (string.IsNullOrEmpty(registerModel.Password) == false &&
+        if (!string.IsNullOrEmpty(registerModel.Password) &&
             registerModel.Password != registerModel.ConfirmPassword)
         {
             fieldMessages[nameof(registerModel.ConfirmPassword)] = "Passwords do not match.";
@@ -113,17 +209,12 @@
 
         if (fieldMessages.Count == 0 && validationMessages.Count == 0)
         {
-            // Replace with real sign-up logic.
             isSignedUp = true;
-
-            // After signup, route to login page (they route to each other)
             Navigation.NavigateTo("/");
         }
 
         await Task.CompletedTask;
     }
-
-    private void BackToLogin() => Navigation.NavigateTo("/");
 
     private class RegisterModel
     {
@@ -141,4 +232,3 @@
         public string? ConfirmPassword { get; set; }
     }
 }
-

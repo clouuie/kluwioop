@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("kluwi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+de426dfef7df5ae55c273c4dc7e70842cfe4ee6b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f20f402a59f2eb34e026ca92cfed129fcf746374")]
 [assembly: System.Reflection.AssemblyProductAttribute("kluwi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("kluwi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
