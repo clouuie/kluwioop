@@ -25,13 +25,13 @@
                 <ValidationMessage For="@(() => loginModel.Username)" />
             </div>
 
-            <div class="mb-3 text-start">
+            <div class="mb-3 text-start password-group">
                 <label class="form-label">Password</label>
                 <InputText class="form-control" @bind-Value="loginModel.Password" type="password" placeholder="Enter password" />
                 <ValidationMessage For="@(() => loginModel.Password)" />
             </div>
 
-            <div class="d-flex justify-content-between align-items-center mb-3">
+            <div class="d-flex justify-content-between align-items-center mb-3 remember-forgot">
                 <div class="form-check text-start">
                     <InputCheckbox class="form-check-input" @bind-Value="loginModel.RememberMe" id="rememberMe" />
                     <label class="form-check-label" for="rememberMe">Remember Me</label>
@@ -39,12 +39,12 @@
                 <a class="small text-primary" href="/forgot-password">Forgot Password?</a>
             </div>
 
-            <button class="btn btn-primary w-100" type="submit">Login</button>
+            <button class="btn btn-primary login-btn" type="submit">Login</button>
         </EditForm>
 
-        <div class="mt-4 text-center">
+        <div class="mt-4 text-center extra-space">
             <span class="text-muted">Don’t have an account?</span>
-            <a class="text-primary ms-1" href="/register">Register</a>
+            <a class="text-primary ms-1 register-link" href="/register"><b>Register</b></a>
         </div>
     </div>
 </div>
@@ -67,6 +67,7 @@
     padding: 30px;
     width: 340px;
     box-shadow: 0 0 10px rgba(150, 80, 255, 0.2);
+    text-align: center;
 }
 
 /* === Headings === */
@@ -79,6 +80,8 @@ h2 {
 p {
     color: #c5b3e6;
     font-size: 0.9rem;
+    margin-top: 8px;
+    margin-bottom: 20px;
 }
 
 /* === Labels and Inputs === */
@@ -86,6 +89,8 @@ p {
     color: #e2d0ff;
     font-size: 0.9rem;
     margin-bottom: 5px;
+    display: block;
+    text-align: left;
 }
 
 .form-control {
@@ -97,6 +102,7 @@ p {
     color: white;
     font-size: 0.9rem;
     margin-top: 4px;
+    margin-bottom: 14px;
 }
 
 .form-control::placeholder {
@@ -109,17 +115,44 @@ p {
     box-shadow: 0 0 3px #a56dff;
 }
 
-/* === Checkbox & Link === */
+/* === Form Group Spacing === */
+.mb-3 {
+    margin-bottom: 18px;
+}
+
+/* Reduce space only for the password group */
+.password-group {
+    margin-bottom: 0;
+}
+.password-group .form-control {
+    margin-bottom: 0;
+}
+
+/* === Remember Me + Forgot Password === */
+.remember-forgot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.form-check {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
 .form-check-label {
     color: #d4c2f3;
     font-size: 0.85rem;
 }
 
+/* === Links === */
 a {
     color: #b48fff;
     text-decoration: none;
     font-size: 0.85rem;
 }
+
 a:hover {
     text-decoration: underline;
 }
@@ -132,15 +165,42 @@ a:hover {
     padding: 10px;
     color: #fff;
     font-weight: 500;
-    margin-top: 5px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
 .btn-primary:hover {
     background-color: #a068ff;
+}
+
+/* === Login Button (same width as textboxes) === */
+.login-btn {
+    width: 100%; /* same as textboxes */
+    height: 40px;
+    margin-top: 8px;
+    margin-bottom: 20px;
+    font-size: 1rem;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* === Extra Space Below Login Button === */
+.extra-space {
+    margin-top: 25px; /* more space before the register text */
 }
 
 /* === Other Text === */
 .text-muted {
     color: #bfa4e9 !important;
+}
+
+/* === Register Link === */
+.register-link {
+    font-weight: bold;
 }
 
 /* === Responsive === */
@@ -158,7 +218,6 @@ a:hover {
 
     private void HandleValidSubmit()
     {
-        // Basic placeholder logic
         isLoggedIn = true;
         // Navigation.NavigateTo("/dashboard");
     }
