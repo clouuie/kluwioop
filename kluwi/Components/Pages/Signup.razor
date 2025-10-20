@@ -1,66 +1,29 @@
 @page "/register"
-@using System.ComponentModel.DataAnnotations
-@inject NavigationManager Navigation
 
 <div class="register-page">
     <div class="register-card shadow">
         <h2 class="text-center mb-3">Create an Account</h2>
         <p class="text-center text-muted mb-4">Join us and start your journey</p>
 
-        @if (isSignedUp)
-        {
-            <div class="alert alert-success" role="alert">
-                Signed up as @registerModel.Username
-            </div>
-        }
-
-        @if (validationMessages?.Count > 0)
-        {
-            <div class="alert alert-danger" role="alert">
-                <ul class="mb-0">
-                    @foreach (var msg in validationMessages)
-                    {
-                        <li>@msg</li>
-                    }
-                </ul>
-            </div>
-        }
-
-        <form @onsubmit="HandleSubmit" @onsubmit:preventDefault="true">
+        <form>
             <div class="mb-3 text-start">
                 <label class="form-label">Username</label>
                 <input class="form-control" @bind="registerModel.Username" placeholder="Enter username" />
-                @if (fieldMessages.ContainsKey(nameof(registerModel.Username)))
-                {
-                    <div class="text-danger">@fieldMessages[nameof(registerModel.Username)]</div>
-                }
             </div>
 
             <div class="mb-3 text-start">
                 <label class="form-label">Email</label>
                 <input class="form-control" type="email" @bind="registerModel.Email" placeholder="e.g. kluwiformon@oop.com" />
-                @if (fieldMessages.ContainsKey(nameof(registerModel.Email)))
-                {
-                    <div class="text-danger">@fieldMessages[nameof(registerModel.Email)]</div>
-                }
             </div>
 
             <div class="mb-3 text-start">
                 <label class="form-label">Password</label>
                 <input class="form-control" type="password" @bind="registerModel.Password" placeholder="Enter password" />
-                @if (fieldMessages.ContainsKey(nameof(registerModel.Password)))
-                {
-                    <div class="text-danger">@fieldMessages[nameof(registerModel.Password)]</div>
-                }
             </div>
 
             <div class="mb-3 text-start">
                 <label class="form-label">Confirm Password</label>
                 <input class="form-control" type="password" @bind="registerModel.ConfirmPassword" placeholder="Confirm password" />
-                @if (fieldMessages.ContainsKey(nameof(registerModel.ConfirmPassword)))
-                {
-                    <div class="text-danger">@fieldMessages[nameof(registerModel.ConfirmPassword)]</div>
-                }
             </div>
 
             <button class="btn btn-primary register-btn" type="submit">Sign Up</button>
@@ -74,192 +37,132 @@
 </div>
 
 <style>
-/* === Layout === */
-.register-page {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #1a0728;
-    font-family: 'Poppins', sans-serif;
-}
-
-/* === Card === */
-.register-card {
-    background-color: #2a0a45;
-    border-radius: 10px;
-    padding: 30px;
-    width: 340px;
-    box-shadow: 0 0 10px rgba(150, 80, 255, 0.2);
-    text-align: center;
-}
-
-/* === Headings === */
-h2 {
-    color: #f0e5ff;
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-}
-
-p {
-    color: #c5b3e6;
-    font-size: 0.9rem;
-    margin-top: 8px;
-    margin-bottom: 20px;
-}
-
-/* === Labels and Inputs === */
-.form-label {
-    color: #e2d0ff;
-    font-size: 0.9rem;
-    margin-bottom: 5px;
-    display: block;
-    text-align: left;
-}
-
-.form-control {
-    width: 94%;
-    padding: 10px;
-    border-radius: 6px;
-    border: 1px solid #8057c8;
-    background-color: #3b1563;
-    color: white;
-    font-size: 0.9rem;
-    margin-top: 4px;
-    margin-bottom: 14px;
-}
-
-.form-control::placeholder {
-    color: #c3a8f0;
-}
-
-.form-control:focus {
-    outline: none;
-    border-color: #a56dff;
-    box-shadow: 0 0 3px #a56dff;
-}
-
-/* === Validation Messages === */
-.text-danger {
-    color: #ff7ad9;
-    font-size: 0.85rem;
-    margin-top: 3px;
-}
-
-/* === Button === */
-.btn-primary {
-    background-color: #8b4dff;
-    border: none;
-    border-radius: 6px;
-    padding: 10px;
-    color: #fff;
-    font-weight: 500;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.btn-primary:hover {
-    background-color: #a068ff;
-}
-
-/* === Register Button (same width as textboxes) === */
-.register-btn {
-    width: 100%;
-    height: 40px;
-    margin-top: 8px;
-    margin-bottom: 20px;
-    font-size: 1rem;
-    text-align: center;
-}
-
-/* === Extra Space Below Sign Up Button === */
-.extra-space {
-    margin-top: 25px;
-}
-
-/* === Links === */
-.text-muted {
-    color: #bfa4e9 !important;
-}
-
-a {
-    color: #b48fff;
-    text-decoration: none;
-    font-size: 0.85rem;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-.login-link {
-    font-weight: bold;
-}
-
-/* === Responsive === */
-@@media (max-width: 500px) {
-    .register-card {
-        width: 90%;
-        padding: 20px;
+    .register-page {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #1a0728;
+        font-family: 'Poppins', sans-serif;
     }
-}
+
+    .register-card {
+        background-color: #2a0a45;
+        border-radius: 10px;
+        padding: 30px;
+        width: 340px;
+        box-shadow: 0 0 10px rgba(150, 80, 255, 0.2);
+        text-align: center;
+    }
+
+    h2 {
+        color: #f0e5ff;
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+    }
+
+    p {
+        color: #c5b3e6;
+        font-size: 0.9rem;
+        margin-top: 8px;
+        margin-bottom: 20px;
+    }
+
+    .form-label {
+        color: #e2d0ff;
+        font-size: 0.9rem;
+        margin-bottom: 5px;
+        display: block;
+        text-align: left;
+    }
+
+    .form-control {
+        width: 94%;
+        padding: 10px;
+        border-radius: 6px;
+        border: 1px solid #8057c8;
+        background-color: #3b1563;
+        color: white;
+        font-size: 0.9rem;
+        margin-top: 4px;
+        margin-bottom: 14px;
+    }
+
+    .form-control::placeholder {
+        color: #c3a8f0;
+    }
+
+    .form-control:focus {
+        outline: none;
+        border-color: #a56dff;
+        box-shadow: 0 0 3px #a56dff;
+    }
+
+    .btn-primary {
+        background-color: #8b4dff;
+        border: none;
+        border-radius: 6px;
+        padding: 10px;
+        color: #fff;
+        font-weight: 500;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .btn-primary:hover {
+        background-color: #a068ff;
+    }
+
+    .register-btn {
+        width: 100%;
+        height: 40px;
+        margin-top: 8px;
+        margin-bottom: 20px;
+        font-size: 1rem;
+    }
+
+    .extra-space {
+        margin-top: 25px;
+    }
+
+    .text-muted {
+        color: #bfa4e9 !important;
+    }
+
+    a {
+        color: #b48fff;
+        text-decoration: none;
+        font-size: 0.85rem;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    .login-link {
+        font-weight: bold;
+    }
+
+    @@media (max-width: 500px) {
+        .register-card {
+            width: 90%;
+            padding: 20px;
+        }
+    }
 </style>
 
 @code {
     private RegisterModel registerModel = new();
-    private bool isSignedUp;
-    private List<string> validationMessages = new();
-    private Dictionary<string, string> fieldMessages = new();
-
-    private async Task HandleSubmit()
-    {
-        validationMessages.Clear();
-        fieldMessages.Clear();
-
-        var context = new ValidationContext(registerModel);
-        var results = new List<ValidationResult>();
-
-        Validator.TryValidateObject(registerModel, context, results, true);
-
-        foreach (var result in results)
-        {
-            foreach (var member in result.MemberNames)
-            {
-                if (!fieldMessages.ContainsKey(member))
-                    fieldMessages[member] = result.ErrorMessage ?? "Invalid value.";
-            }
-        }
-
-        if (!string.IsNullOrEmpty(registerModel.Password) &&
-            registerModel.Password != registerModel.ConfirmPassword)
-        {
-            fieldMessages[nameof(registerModel.ConfirmPassword)] = "Passwords do not match.";
-        }
-
-        if (fieldMessages.Count == 0 && validationMessages.Count == 0)
-        {
-            isSignedUp = true;
-            Navigation.NavigateTo("/");
-        }
-
-        await Task.CompletedTask;
-    }
 
     private class RegisterModel
     {
-        [Required(ErrorMessage = "Username is required")]
         public string? Username { get; set; }
-
-        [Required(ErrorMessage = "Email is required")]
-        [EmailAddress(ErrorMessage = "Invalid email address")]
         public string? Email { get; set; }
-
-        [Required(ErrorMessage = "Password is required")]
         public string? Password { get; set; }
-
-        [Required(ErrorMessage = "Please confirm your password")]
         public string? ConfirmPassword { get; set; }
     }
 }
+
+
